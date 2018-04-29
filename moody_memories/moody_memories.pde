@@ -1,5 +1,6 @@
 int feel;
 int presence;
+int emotion;
 
 int alpha;
 int beta;
@@ -10,6 +11,11 @@ String lonely;
 String state;
 
 int napTime = 3000;
+
+int[] goodLonely = { 1, 1, 1, 2, 3, 3, 3, 3, 4, 4 };
+int[] goodNotLonely = { 1, 1, 1, 1, 2, 2, 2, 3, 3, 4 };
+int[] badLonely = { 1, 2, 2, 3, 3, 3, 4, 4, 4, 4 };
+int[] badNotLonely = { 1, 1, 2, 2, 2, 2, 3, 4, 4, 4 };
 
 void setup(){
   size(400, 400, P2D);
@@ -22,6 +28,7 @@ void draw(){
     
   feel = int(random(10));
   //println(feel);
+  //Could have also populated an array with six 0s and four 1s and a random index
   switch(feel){
     case 0:
     case 1:
@@ -39,7 +46,7 @@ void draw(){
       mood = "bad";
       alpha = 1;
       break;
-  }
+  };
   
   // Simulate the reading of someone being present
   presence = int(random(2));
@@ -53,9 +60,23 @@ void draw(){
       lonely = "lonely";
       beta = 1;
       break;
-  }
+  };
   
-  state = "I'm in a " + mood + " mood and I am " + lonely;
+  emotion = int(random(10));
+  //println(emotion);
+  
+  //Determine emotion
+  if (alpha == 0 && beta == 0){
+    gamma = goodLonely[emotion];
+  } else if (alpha == 0 && beta == 1){
+    gamma = goodNotLonely[emotion];
+  } else if (alpha == 1 && beta == 0){
+    gamma = badLonely[emotion];
+  } else if (alpha == 1 && beta == 1){
+    gamma = badNotLonely[emotion];
+  }
+
+  state = "I'm in a " + mood + " mood, I am " + lonely + ", and I feel " + gamma;
   println(state);
   //}
   
