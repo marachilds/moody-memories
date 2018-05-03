@@ -18,7 +18,6 @@ OpenCV opencv;
 
 void setup(){
   size(640, 480, P2D);
-  //background(255);
   //Syphon
   client = new SyphonClient(this);
   //Face detection

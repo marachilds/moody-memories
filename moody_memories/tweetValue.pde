@@ -5,9 +5,8 @@ void tweetValue(){
   String[] scaredTweets = loadStrings("scared.txt");
   String[] madTweets = loadStrings("mad.txt");
   String theTweet;
-  String urlBase = "https://maker.ifttt.com/trigger/test-value/with/key/h0Z0xn_Sh1_KNaHfcnoEPUz2ow8n-OZC1eolXk7deZ-?";
+  String urlBase = "https://maker.ifttt.com/trigger/iwilltweet/with/key/h0Z0xn_Sh1_KNaHfcnoEPUz2ow8n-OZC1eolXk7deZ-?";
   String fullURL;
-  //String value1;
   int pick;
   
   pick = int(random(20));

@@ -36,8 +36,6 @@ String output;
 
 void getMood(){
   feel = int(random(10));
-  //println(feel);
-  //Using array instead of switch case
   alpha = moodTendency[feel];
   switch(alpha){
     case 0:
@@ -68,10 +66,6 @@ void getEmotionAction(){
   emotion = int(random(10));
   action = int(random(4));
   
-  //Initialize as a nonoption
-  //tweet = 2;
-  //spotify = 2;
-  
   //Determine emotion
   if (alpha == 0 && beta == 0){
     gamma = goodLonely[emotion];
@@ -89,16 +83,16 @@ void getEmotionAction(){
   
   switch(gamma){
     case 1:
-      feeling = "happy! :)";
+      feeling = "happy";
       break;
     case 2:
-      feeling = "sad :(";
+      feeling = "sad";
       break;
     case 3:
-      feeling = "scared...";
+      feeling = "scared";
       break;
     case 4:
-      feeling = "mad.";
+      feeling = "mad";
       break;
   }
   
@@ -112,7 +106,7 @@ void getEmotionAction(){
   if(spotify == 0){
     playMusic = "I will play music";
     //Uncomment to send
-    //loadStrings("https://maker.ifttt.com/trigger/iwlith/key/h0Z0xn_Sh1_KNaHfcnoEPUz2ow8n-OZC1eolXk7deZ-");
+    loadStrings("https://maker.ifttt.com/trigger/iwillplaymusic/key/h0Z0xn_Sh1_KNaHfcnoEPUz2ow8n-OZC1eolXk7deZ-");
   } else {
     playMusic = "I will not play music";
   }
