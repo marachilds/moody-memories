@@ -69,8 +69,8 @@ void getEmotionAction(){
   action = int(random(4));
   
   //Initialize as a nonoption
-  tweet = 2;
-  spotify = 2;
+  //tweet = 2;
+  //spotify = 2;
   
   //Determine emotion
   if (alpha == 0 && beta == 0){
@@ -104,7 +104,8 @@ void getEmotionAction(){
   
   if(tweet == 0){
     sendTweet = "I will tweet";
-    //tweetValue();; } else {
+    tweetValue();
+  } else {
     sendTweet = "I will not tweet";
   }
   
