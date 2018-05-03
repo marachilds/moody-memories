@@ -1,23 +1,39 @@
 //IFTTT
 import processing.net.*;
-
 Client c;
 String data;
 String myserver = "maker.ifttt.com";
 
 //Syphon
 import codeanticode.syphon.*;
-
 PImage img;
 SyphonClient client;
 
+//Face Detection
+import gab.opencv.*;
+import processing.video.*;
+import java.awt.*;
+Capture video;
+OpenCV opencv;
+
 void setup(){
-  size(480, 340, P2D);
+  size(640, 480, P2D);
   //background(255);
+  //Syphon
   client = new SyphonClient(this);
+  //Face detection
+  video = new Capture(this, 640/2, 480/2);
+  opencv = new OpenCV(this, 640/2, 480/2);
+  opencv.loadCascade(OpenCV.CASCADE_FRONTALFACE);  
+
+  video.start();
 }
 
 void draw(){
+  //Face Detectioin
+  scale(2);
+  opencv.loadImage(video);
+  //Redraw
   background(0);
   // Get image from Syphon
   if (client.newFrame()) {
@@ -30,7 +46,7 @@ void draw(){
   //Run getState every 100 frames
   if (frameCount % 100 == 0){
     getState();
-    seeImage();
+    //seeImage();
   }
 }
 
@@ -40,12 +56,12 @@ void getState(){
   getEmotionAction();
   
   state = "I'm in a " + mood + " mood, I am " + lonely + ", and I feel " + feeling;
-  
-  //fill(0, 102, 153);
-  //text(state, 20, 20);
-  //text(output, 20, 40);
+
   println(state);
   println(output);
-  
-  //delay(napTime);
 };
+
+//Face detection
+void captureEvent(Capture c) {
+  c.read();
+}

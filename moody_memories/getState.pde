@@ -14,9 +14,6 @@ String lonely;
 String feeling;
 String state;
 
-//Define delay time, this might be randomised later
-//int napTime = 3000;
-
 //Arrays for probability
 int[] moodTendency = { 0, 0, 0, 0, 0, 0, 1, 1, 1, 1 };
 int[] goodLonely = { 1, 1, 1, 2, 3, 3, 3, 3, 4, 4 };
@@ -53,20 +50,16 @@ void getMood(){
 }
 
 void getPresence(){
-  // Simulate the reading of someone being present
-  // Beta will be 0 (nobody) or 1 (somebody)
-  // Use wekinator to train
-  beta = int(random(2));
-  //println(beta);
-  switch(beta){
-    case 0:
-      lonely = "lonely";
-      toDo = 0;
-      break;
-    case 1:
-      lonely = "not lonely";
-      toDo = 1;
-      break;
+  //Face detection
+  Rectangle[] faces = opencv.detect();
+  if (faces.length > 0) {
+    beta = 1;
+    lonely = "not lonely";
+    output = playMusic;
+  } else {
+    beta = 0;
+    lonely = "lonely";
+    output = sendTweet;
   };
 }
 
@@ -75,6 +68,7 @@ void getEmotionAction(){
   emotion = int(random(10));
   action = int(random(4));
   
+  //Initialize as a nonoption
   tweet = 2;
   spotify = 2;
   
@@ -110,26 +104,15 @@ void getEmotionAction(){
   
   if(tweet == 0){
     sendTweet = "I will tweet";
-    //Uncomment to send
-    loadStrings("https://maker.ifttt.com/trigger/iwilltweet/with/key/cKNrta9uT3vzH13ZncTvaW");
-  } else {
+    //tweetValue();; } else {
     sendTweet = "I will not tweet";
   }
   
   if(spotify == 0){
     playMusic = "I will play music";
     //Uncomment to send
-    loadStrings("https://maker.ifttt.com/trigger/iwillplaymusic/with/key/cKNrta9uT3vzH13ZncTvaW");
+    //loadStrings("https://maker.ifttt.com/trigger/iwlith/key/h0Z0xn_Sh1_KNaHfcnoEPUz2ow8n-OZC1eolXk7deZ-");
   } else {
     playMusic = "I will not play music";
-  }
-
-  switch(toDo){
-    case 0:
-      output = sendTweet;
-      break;
-    case 1:
-      output = playMusic;
-      break;
   }
 }

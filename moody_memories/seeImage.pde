@@ -15,7 +15,6 @@ void seeImage(){
     for (int i = 0; i < dimension; i += 3) { 
       img.pixels[i] = color(0, 0, 255); 
     }
-    //img.resize(img.width*2, img.height*2);
   } else if (gamma == 3) {
     //Scared
     float v = 1.0 / 9.0;
@@ -46,7 +45,6 @@ void seeImage(){
     for (int i = 0; i < dimension; i += 10) { 
       img.pixels[i] = color(0, 0, 0); 
     }
-    //img.resize(img.width/2, img.height/2);
   }
   
   //Update with new image
