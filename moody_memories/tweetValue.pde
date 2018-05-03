@@ -10,7 +10,7 @@ void tweetValue(){
   //String value1;
   int pick;
   
-  pick = int(random(10));
+  pick = int(random(20));
   if (gamma == 1) {
     theTweet = happyTweets[pick];
   } else if (gamma == 2) {

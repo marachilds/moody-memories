@@ -89,16 +89,16 @@ void getEmotionAction(){
   
   switch(gamma){
     case 1:
-      feeling = "happy";
+      feeling = "happy! :)";
       break;
     case 2:
-      feeling = "sad";
+      feeling = "sad :(";
       break;
     case 3:
-      feeling = "scared";
+      feeling = "scared...";
       break;
     case 4:
-      feeling = "mad";
+      feeling = "mad.";
       break;
   }
   
