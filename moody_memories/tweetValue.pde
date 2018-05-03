@@ -9,6 +9,7 @@ void tweetValue(){
   String fullURL;
   int pick;
   
+  if (tweet == 0) {
   pick = int(random(20));
   if (gamma == 1) {
     theTweet = happyTweets[pick];
@@ -24,6 +25,8 @@ void tweetValue(){
   
   fullURL = urlBase + "value1=" + theTweet + "&" + "value2=" + feeling;
   //println(fullURL);
-  
   loadStrings(fullURL);
+  } else {
+    println("nothing");
+  }
 }

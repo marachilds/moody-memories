@@ -70,15 +70,19 @@ void getEmotionAction(){
   if (alpha == 0 && beta == 0){
     gamma = goodLonely[emotion];
     tweet = goodTweet[action];
+    spotify = 1;
   } else if (alpha == 0 && beta == 1){
     gamma = goodNotLonely[emotion];
     spotify = goodMusic[action];
+    tweet = 1;
   } else if (alpha == 1 && beta == 0){
     gamma = badLonely[emotion];
     tweet = badTweet[action];
+    spotify = 1;
   } else if (alpha == 1 && beta == 1){
     gamma = badNotLonely[emotion];
     spotify = badMusic[action];
+    tweet = 1;
   }
   
   switch(gamma){
@@ -105,8 +109,8 @@ void getEmotionAction(){
   
   if(spotify == 0){
     playMusic = "I will play music";
-    //Uncomment to send
     loadStrings("https://maker.ifttt.com/trigger/iwillplaymusic/key/h0Z0xn_Sh1_KNaHfcnoEPUz2ow8n-OZC1eolXk7deZ-");
+    println("sent");
   } else {
     playMusic = "I will not play music";
   }

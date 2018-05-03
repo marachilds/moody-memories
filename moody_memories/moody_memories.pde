@@ -43,7 +43,7 @@ void draw(){
   }
   
   //Run getState every 100 frames
-  if (frameCount % 100 == 0){
+  if (frameCount % 300 == 0){
     getState();
     //seeImage();
   }
